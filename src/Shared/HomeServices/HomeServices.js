@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeServices = () => {
 
@@ -31,6 +32,12 @@ const HomeServices = () => {
               </div>
               )}
            </div>
+
+            <div className='text-center py-10'>
+
+            <Link to={'/services'}> <button className="btn btn-outline ">See More Services</button></Link>
+
+            </div>
             
         </div>
     );
