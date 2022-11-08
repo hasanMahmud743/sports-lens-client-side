@@ -1,20 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import { myContext } from '../../Contexts/Contexts';
 import Review from '../../Shared/Review/Review';
+import ReviewUser from '../../Shared/ReviewUser/ReviewUser';
 
 const ServiceDetails = () => {
     const {user} = useContext(myContext)
-    console.log(user)
+    const [reviews, setReviews] = useState([])
+    console.log(reviews, user)
     const details = useLoaderData()
+
+    useEffect(()=>{
+        fetch('http://localhost:5300/review')
+        .then(res => res.json())
+        .then(data => setReviews(data))
+    }, [reviews])
     
     return (
        <div>
              <div className='md:p-5 max-w-3xl m-auto'>
              <p className='text-3xl p-5 font-bold'>Details of: {details.title}</p>
 
-            <div  className="card m-10 bg-base-100 shadow-xl">
+            <div  className="card m-10  bg-base-100 shadow-xl">
            
             <figure className="">
                 <img src={details.image} alt="Shoes" className="rounded-md max-w-2xl" />
@@ -39,10 +47,26 @@ const ServiceDetails = () => {
                 <button  className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
+
             </div>
-            {
-                (user && user?.uid) ?  <Review></Review> : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
+          <div className='m-5'>
+              
+          {
+                (user && user?.uid) ? <ReviewUser></ReviewUser>  : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
             }
+
+
+           <div>
+           <p className='text-3xl font-bold text-center pb-5 pt-16'>Previous reviews:</p>
+
+           {
+                
+                reviews.map(review => <Review key={review._id} review={review}></Review>)
+                
+            }
+           </div>
+            <Review></Review>
+          </div>
 
            
 
