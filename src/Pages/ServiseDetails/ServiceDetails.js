@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaStar, FaStarHalf } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
+import { myContext } from '../../Contexts/Contexts';
+import Review from '../../Shared/Review/Review';
 
 const ServiceDetails = () => {
+    const {user} = useContext(myContext)
+    console.log(user)
     const details = useLoaderData()
+    
     return (
        <div>
              <div className='md:p-5 max-w-3xl m-auto'>
-            <p>this is service details page here {details._id}</p>
+             <p className='text-3xl p-5 font-bold'>Details of: {details.title}</p>
 
             <div  className="card m-10 bg-base-100 shadow-xl">
+           
             <figure className="">
                 <img src={details.image} alt="Shoes" className="rounded-md max-w-2xl" />
             </figure>
@@ -34,10 +40,17 @@ const ServiceDetails = () => {
                 </div>
             </div>
             </div>
+            {
+                (user && user?.uid) ?  <Review></Review> : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
+            }
+
+           
+
+           
             
         </div>
 
-        <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
+       
        </div>
     );
 };

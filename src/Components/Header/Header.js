@@ -24,7 +24,7 @@ const Header = () => {
               <li><a>Item 3</a></li>
             </ul>
           </div>
-        <Link to='/'>  <a className="btn btn-ghost normal-case text-xl">Sports-Lance</a></Link>
+        <Link to='/'>  <a className="btn btn-ghost normal-case text-xl">Sports-Lens</a></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
