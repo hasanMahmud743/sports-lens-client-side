@@ -12,10 +12,14 @@ const ServiceDetails = () => {
     const details = useLoaderData()
 
     useEffect(()=>{
-        fetch('http://localhost:5300/review')
+        fetch(`http://localhost:5300/review?title=${details.title}`)
         .then(res => res.json())
-        .then(data => setReviews(data))
-    }, [reviews])
+        .then(data => {
+            console.log(data)
+            setReviews(data)
+           
+        })
+    }, [reviews, details.title])
     
     return (
        <div>
@@ -52,20 +56,25 @@ const ServiceDetails = () => {
           <div className='m-5'>
               
           {
-                (user && user?.uid) ? <ReviewUser></ReviewUser>  : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
+                (user && user?.uid) ? <ReviewUser title={details.title}></ReviewUser>  : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
             }
 
 
            <div>
            <p className='text-3xl font-bold text-center pb-5 pt-16'>Previous reviews:</p>
+           {
+            reviews.length === 0 ? 
+            <p className='text-3xl font-bold text-center text-red-400 border-lg'>No review was posted in this service yet. </p> : 
+            reviews.map(review => <Review key={review._id} review={review}></Review>)
+           }
 
            {
                 
-                reviews.map(review => <Review key={review._id} review={review}></Review>)
+                
                 
             }
            </div>
-            <Review></Review>
+           
           </div>
 
            

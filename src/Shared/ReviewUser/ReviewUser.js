@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { myContext } from '../../Contexts/Contexts';
 
-const ReviewUser = () => {
+const ReviewUser = ({title}) => {
+    console.log(title)
     const {user} = useContext(myContext)
   
 
@@ -12,7 +13,7 @@ const ReviewUser = () => {
         // const name = e.target.text.value
         const text = e.target.placeholder.value
         console.log(text)
-        const review = {email, image, text}
+        const review = {email, image, text, title}
 
         fetch('http://localhost:5300/services',{
             method: 'POST',
