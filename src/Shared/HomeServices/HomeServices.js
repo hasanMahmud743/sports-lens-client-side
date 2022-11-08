@@ -13,7 +13,7 @@ const HomeServices = () => {
 
     return (
         <div>
-            <h2 className='text-4xl font-bold text-center'>See all of our services here.</h2>
+            <h2 className='text-3xl font-bold text-center'>See all of our services here.</h2>
 
            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
            {
@@ -24,9 +24,9 @@ const HomeServices = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">{card.title}</h2>
-                  <p>{card.description}</p>
+                  <p>{card.description.slice(0, 100) + '...'}</p>
                   <div className="card-actions">
-                    <button className="btn btn-primary">Buy Now</button>
+                  <Link to={`/services/${card._id}`}>  <button className="btn btn-primary">More Info</button></Link>
                   </div>
                 </div>
               </div>
