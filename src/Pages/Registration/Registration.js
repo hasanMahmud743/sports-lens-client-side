@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../../Contexts/Contexts';
 
 const Registration = () => {
+  const navigate = useNavigate()
     const {createUser, googleSignIn} = useContext(myContext)
 
     const handleRegistration = (e) =>{
@@ -12,14 +13,20 @@ const Registration = () => {
         const password = form.password.value
         console.log(email, password)
         createUser(email, password)
-        .then(user => console.log(user.user))
+        .then(user => {
+          console.log(user.user)
+          navigate('/')
+        })
         .catch(err => console.log(err))
 
     }
 
     const googleSign = () =>{
         googleSignIn()
-        .then(user => user.user)
+        .then(user => {
+          console.log(user.user)
+          navigate('/')
+        })
         .catch( err => console.log(err))
     }
     return (

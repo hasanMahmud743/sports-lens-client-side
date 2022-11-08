@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../../Contexts/Contexts';
 
 const Login = () => {
+  const navigate = useNavigate()
     const {signInUser} = useContext(myContext)
 
     const handleLogin = (e) =>{
@@ -12,7 +13,10 @@ const Login = () => {
         const password = form.password.value
         console.log(email, password)
         signInUser(email, password)
-        .then(user => console.log(user.user))
+        .then(user => {
+          console.log(user.user)
+          navigate('/')
+        })
         .catch(err => console.log(err))
 
     }
