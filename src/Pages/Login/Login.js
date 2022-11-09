@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../../Contexts/Contexts';
 
 const Login = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+
     const {signInUser} = useContext(myContext)
 
     const handleLogin = (e) =>{
         e.preventDefault()
+        setLoading(true)
         const form = e.target
         const email = form.email.value
         const password = form.password.value
@@ -15,14 +18,25 @@ const Login = () => {
         signInUser(email, password)
         .then(user => {
           console.log(user.user)
+          setLoading(false)
           navigate('/')
+         
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          setLoading(false)
+        })
 
     }
     return (
         <div>
+            {
+          loading &&  <div className='text-center pt-10 bg-base-200'>
+          <button className="btn btn-square loading"></button>
+          </div>
+         }
+        
           <div className="hero min-h-screen lg:p-20 bg-base-200">
+        
   <div className="hero-content flex-col  lg:flex-row-reverse">
     <div className="text-center lg:m-20  lg:text-left">
       <h1 className="text-5xl font-bold">Login now!</h1>
