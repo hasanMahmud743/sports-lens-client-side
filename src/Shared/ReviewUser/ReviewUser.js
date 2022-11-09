@@ -15,7 +15,7 @@ const ReviewUser = ({title}) => {
         console.log(text)
         const review = {email, image, text, title}
 
-        fetch('http://localhost:5300/services',{
+        fetch('http://localhost:5300/review',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'

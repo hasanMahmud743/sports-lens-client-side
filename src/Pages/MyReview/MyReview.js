@@ -63,9 +63,9 @@ const MyReview = () => {
     <tbody>
    
       {
-        reviews.map( review =>{
-           return <ReviewGalary key={review._id} modal={modal}  handleDelete={handleDelete} review={review}></ReviewGalary>
-        })
+        (reviews.length === 0) ? <p className='pt-3 pb-20 font-bold text-2xl w-full'>No review is added yet.</p> : reviews.map( review =>{
+            return <ReviewGalary key={review._id} modal={modal}  handleDelete={handleDelete} review={review}></ReviewGalary>
+         })
       }
     </tbody>
    

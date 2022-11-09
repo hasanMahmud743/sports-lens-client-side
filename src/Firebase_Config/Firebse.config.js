@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCMzflKWi4Z4aPIek74HJhI2FSV_N3hU1M",
-  authDomain: "sports-lens-assignment.firebaseapp.com",
-  projectId: "sports-lens-assignment",
-  storageBucket: "sports-lens-assignment.appspot.com",
-  messagingSenderId: "316676244301",
-  appId: "1:316676244301:web:012f0e91165fc2a596ed04"
+  apiKey: process.env.REACT_APP_apikey,
+  authDomain:  process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase

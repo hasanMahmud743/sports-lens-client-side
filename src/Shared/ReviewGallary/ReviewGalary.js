@@ -94,8 +94,8 @@ const ReviewGalary = ({review, handleDelete, modal}) => {
   
     
     <div className="modal-action">
-    <button onClick={()=> handleSubmit(_id)} className='btn'>submit</button>
-      <label htmlFor={_id} className="btn">Close</label>
+    {/* <button  className='btn'>submit</button> */}
+      <label onClick={()=> handleSubmit(_id)} htmlFor={_id} className="btn">submit</label>
     </div>
   </div>
 

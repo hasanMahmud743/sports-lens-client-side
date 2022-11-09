@@ -2,18 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeServices = () => {
+  const [loading, setLoading] = useState(true)
 
     const [cards, setCards] = useState([])
 
     useEffect(()=>{
         fetch('http://localhost:5300')
         .then(res => res.json())
-        .then(data => setCards(data))
+        .then(data => {
+          setCards(data)
+          setLoading(false)
+        })
     }, [])
 
     return (
         <div>
+         
             <h2 className='text-3xl font-bold text-center'>See all of our services here.</h2>
+            {
+          loading &&  <div className='text-center mt-10'>
+          <button className="btn btn-square loading"></button>
+          </div>
+         }
 
            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
            {
