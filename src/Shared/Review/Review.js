@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 
 const Review = ({review}) => {
-    console.log(review)
+    // console.log(review)
     
     return (
         <div className='md:p-3'>

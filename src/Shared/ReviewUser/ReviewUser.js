@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { myContext } from '../../Contexts/Contexts';
 
 const ReviewUser = ({title}) => {
-    console.log(title)
+    // console.log(title)
     const {user} = useContext(myContext)
   
 
@@ -10,10 +10,11 @@ const ReviewUser = ({title}) => {
         e.preventDefault()
         const email = user.email
         const image = user.photoURL
+        const time = new Date().toLocaleTimeString()
         // const name = e.target.text.value
         const text = e.target.placeholder.value
         console.log(text)
-        const review = {email, image, text, title}
+        const review = {email, image, text, title, time}
 
         fetch('http://localhost:5300/review',{
             method: 'POST',

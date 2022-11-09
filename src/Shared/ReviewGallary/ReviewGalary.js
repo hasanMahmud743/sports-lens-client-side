@@ -4,25 +4,8 @@ const ReviewGalary = ({review, handleDelete, modal}) => {
     console.log(review)
     const {email, image, title, text, _id} = review
 
-    const handleupdate = id =>{
-
-
-        fetch(`http://localhost:5300/review/${id}`,{
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify()
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
-    }
-
-
+    
     let  placeholderText
-
     const collectText = e => {
         placeholderText = e.target.value
         

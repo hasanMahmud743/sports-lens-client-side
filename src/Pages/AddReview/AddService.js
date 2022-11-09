@@ -9,14 +9,16 @@ const AddService = () => {
         const img = form.image.value
         const prev = form.p_price.value
         const current = form.c_price.value
+        const time = new Date().toLocaleTimeString()
         const text = form.placeholder.value
-        console.log(title, img, prev, current, text)
+        console.log(title, img, prev, current, text, time)
         const service = {
             title,
             image: img,
             description: text,
             prev_price: prev,
             current_price: current,
+            time,
         }
 
         fetch('http://localhost:5300/services',{
@@ -26,6 +28,7 @@ const AddService = () => {
             },
             body: JSON.stringify(service) 
         })
+
         .then(res => res.json())
         .then(data => {
             alert('Alhamdulillah! Service Updated successfully')

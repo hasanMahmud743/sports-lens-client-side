@@ -16,8 +16,25 @@ const Login = () => {
         const password = form.password.value
         console.log(email, password)
         signInUser(email, password)
+
         .then(user => {
-          console.log(user.user)
+          console.log(user.user.email)
+          const currentUser = {email: user.user.email}
+            console.log(user)
+            
+            fetch('http://localhost:5300/jwt',{
+                method: 'POST',
+                headers:{
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('token', data.token)
+            })
+
           setLoading(false)
           navigate('/')
          
