@@ -29,6 +29,18 @@ const MyReview = () => {
             console.log(data)
         })
     }
+
+   
+
+    const modal = _id =>{
+
+        <div>
+   
+   </div>
+
+    }
+
+
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -41,9 +53,9 @@ const MyReview = () => {
             <input type="checkbox" className="checkbox" />
           </label>
         </th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Name & Email</th>
+        <th>Service</th>
+        <th>Reviews</th>
         <th></th>
       </tr>
     </thead>
@@ -52,21 +64,19 @@ const MyReview = () => {
    
       {
         reviews.map( review =>{
-           return <ReviewGalary key={review._id} handleDelete={handleDelete} review={review}></ReviewGalary>
+           return <ReviewGalary key={review._id} modal={modal}  handleDelete={handleDelete} review={review}></ReviewGalary>
         })
       }
-     
-      
-     
-     
-
-
     </tbody>
    
-   
-    
   </table>
-</div>
+
+
+  
+
+
+
+     </div>
             
         </div>
     );

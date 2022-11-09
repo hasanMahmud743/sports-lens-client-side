@@ -1,8 +1,55 @@
 import React from 'react';
 
-const ReviewGalary = ({review, handleDelete}) => {
+const ReviewGalary = ({review, handleDelete, modal}) => {
     console.log(review)
     const {email, image, title, text, _id} = review
+
+    const handleupdate = id =>{
+
+
+        fetch(`http://localhost:5300/review/${id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+
+
+    let  placeholderText
+
+    const collectText = e => {
+        placeholderText = e.target.value
+        
+      }
+
+      const handleSubmit =(id) =>{
+        console.log(placeholderText)
+
+        fetch(`http://localhost:5300/review/${id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({text : placeholderText})
+        })
+        .then(res =>  res.json())
+        .then(data => {
+            console.log(data)})
+
+
+   
+
+    }
+
+  
+
+
 
    
     return (
@@ -29,15 +76,33 @@ const ReviewGalary = ({review, handleDelete}) => {
         <td>
          {title}
           <br/>
-          <span className="badge badge-ghost badge-sm">{text}</span>
+          {/* <span className="badge badge-ghost badge-sm">{text}</span> */}
         </td>
-        <td>Purple</td>
+        <span className="badge badge-ghost badge-sm">{text}</span>
         <th>
-          <button className="btn btn-ghost btn-xs">EDIT REVIEW</button>
+        <label htmlFor={_id} className="btn btn-outline btn-sm">Edit Review</label>
+
         </th>
-      </tr>
-            
+
+<input type="checkbox" id={_id} className="modal-toggle" />
+<div className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box">
+    <p className='font-bold text-xl py-3 '>Edit Review section:</p>
+  
+    <input onChange={collectText} name='placeholder' type="placeholder" className="textarea textarea-bordered w-full pb-28" placeholder="Update your review..."></input>
+   
+  
     
+    <div className="modal-action">
+    <button onClick={()=> handleSubmit(_id)} className='btn'>submit</button>
+      <label htmlFor={_id} className="btn">Close</label>
+    </div>
+  </div>
+
+      
+</div>
+       
+      </tr>
     );
 };
 
