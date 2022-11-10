@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { myContext } from '../../Contexts/Contexts';
 
 const ReviewGalary = ({review, handleDelete, loader, setLoader}) => {
     console.log(review)
-    const {email, image, title, text, _id} = review
+    const {user} = useContext(myContext)
+    const {email, image, name, title, text, _id} = review
 
 
     let  placeholderText
@@ -54,7 +56,7 @@ const ReviewGalary = ({review, handleDelete, loader, setLoader}) => {
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
+              <div className="font-bold">{user.displayName ? user.displayName : 'User'}</div>
               <div className="text-sm opacity-50">{email}</div>
             </div>
           </div>

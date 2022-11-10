@@ -9,7 +9,7 @@ const MyReview = () => {
   useTitle('My Review')
     const [reviews, setReviews] = useState([])
     const [loader, setLoader] = useState(false)
-    const {user} = useContext(myContext)
+    const {user, logOut} = useContext(myContext)
     console.log(reviews)
     // const review = useLoaderData
     const notify = () => toast("Review Deleted successfully!");

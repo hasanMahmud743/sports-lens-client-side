@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { myContext } from '../../Contexts/Contexts';
 import useTitle from '../../UseTitle/UseTitle';
 
 const AddService = () => {
   useTitle('Add Review')
   const navigate = useNavigate()
+  const {user} = useContext(myContext)
   
   const notify = () => toast("Congrates! Service added successfully");
 
     const addServices = e =>{
         e.preventDefault()
         const form = e.target
+        const name = user.displayName
         const title = form.title.value
         const img = form.image.value
         const prev = form.p_price.value
@@ -28,6 +31,7 @@ const AddService = () => {
             prev_price: prev,
             current_price: current,
             time,
+            name
         }
 
         fetch('https://sports-lens-assignment.vercel.app/services',{

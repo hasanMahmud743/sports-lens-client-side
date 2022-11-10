@@ -18,7 +18,7 @@ const HomeServices = () => {
     }, [])
 
     return (
-        <div>
+        <div className='pt-16'>
          
             <h2 className='text-3xl font-bold text-center'>See all of our services here.</h2>
             {

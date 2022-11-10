@@ -45,8 +45,25 @@ const Registration = () => {
     const googleSign = () =>{
       setLoading(true)
         googleSignIn()
+        
         .then(user => {
-          console.log(user.user)
+          
+          console.log(user.user.email)
+          const currentUser = {email: user.user.email}
+            console.log(user)
+            
+            fetch('https://sports-lens-assignment.vercel.app/jwt',{
+                method: 'POST',
+                headers:{
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(currentUser)
+            })
+            
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('token', data.token)
+            })
           navigate('/')
         })
         .catch( err => {

@@ -1,0 +1,30 @@
+.banner{
+    
+    background-image:
+    linear-gradient(to right, rgba(28, 29, 31, 0.82), rgba(255, 253, 255, 0.23)),
+    url('https://images.unsplash.com/photo-1517282079187-899edd773b0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    background-position: center;
+    height: 100vh;
+    color: white;
+align-items: center; }
+
+.carousel-img:after {
+    content:'';
+    position:absolute;
+    left:0; 
+    top:0;
+    width:100%; 
+    height:100%;
+    border-radius: 12px;
+    display:inline-block;
+    background: linear-gradient(to right,  #151515 0%,rgba(21, 21, 21, 0) 100%); /* W3C */
+  }
+   
+
+
+
+.width{
+   width: 600px;
+   padding-left: 40px;
+   align-items: center;
+}
