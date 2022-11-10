@@ -7,7 +7,7 @@ const HomeServices = () => {
     const [cards, setCards] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5300')
+        fetch('https://sports-lens-assignment.vercel.app')
         .then(res => res.json())
         .then(data => {
           setCards(data)

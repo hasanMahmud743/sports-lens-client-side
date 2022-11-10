@@ -23,12 +23,12 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: ()=> fetch('http://localhost:5300/services')
+                loader: ()=> fetch('https://sports-lens-assignment.vercel.app/services')
             },
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({params})=> fetch(`http://localhost:5300/services/${params.id}`)
+                loader: ({params})=> fetch(`https://sports-lens-assignment.vercel.app/services/${params.id}`)
             },
             {
                 path:'/login',
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             {
                 path: '/myreview',
                 element:<Private> <MyReview></MyReview></Private>,
-                fetch: () => ('http://localhost:5300/review')
+                fetch: () => ('https://sports-lens-assignment.vercel.app/review')
             },
 
             {

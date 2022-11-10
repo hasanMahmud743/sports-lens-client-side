@@ -7,7 +7,7 @@ const ReviewUser = ({title, setLoader, loader}) => {
   
 
     const submitReview =(e) =>{
-        setLoader(!loader)
+        
         e.preventDefault()
         const email = user.email
         const image = user.photoURL
@@ -17,7 +17,7 @@ const ReviewUser = ({title, setLoader, loader}) => {
         console.log(text)
         const review = {email, image, text, title, time}
 
-        fetch('http://localhost:5300/review',{
+        fetch('https://sports-lens-assignment.vercel.app/review',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'
@@ -27,6 +27,7 @@ const ReviewUser = ({title, setLoader, loader}) => {
         .then(res => res.json())
         .then(data => {
             alert('reviwe udatedd')
+            setLoader(!loader)
             e.target.reset()
         })
     }

@@ -22,7 +22,7 @@ const Login = () => {
           const currentUser = {email: user.user.email}
             console.log(user)
             
-            fetch('http://localhost:5300/jwt',{
+            fetch('https://sports-lens-assignment.vercel.app/jwt',{
                 method: 'POST',
                 headers:{
                     'content-type': 'application/json'

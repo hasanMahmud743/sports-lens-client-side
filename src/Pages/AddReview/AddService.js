@@ -21,7 +21,7 @@ const AddService = () => {
             time,
         }
 
-        fetch('http://localhost:5300/services',{
+        fetch('https://sports-lens-assignment.vercel.app/services',{
             method: 'POST',
             headers:{
                 'content-type' : 'application/json'

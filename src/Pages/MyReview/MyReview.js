@@ -11,7 +11,8 @@ const MyReview = () => {
 
     useEffect(()=>{
        
-        fetch(`http://localhost:5300/review?email=${user?.email}`,{
+        
+        fetch(`https://sports-lens-assignment.vercel.app/review?email=${user?.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -23,8 +24,10 @@ const MyReview = () => {
         })
     }, [user?.email, loader])
 
+
+
     const handleDelete =(id) =>{
-        fetch(`http://localhost:5300/review/${id}`,{
+        fetch(`https://sports-lens-assignment.vercel.app/review/${id}`,{
             method: 'DELETE',
         })
         .then(res => res.json())

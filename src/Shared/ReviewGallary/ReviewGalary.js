@@ -15,7 +15,7 @@ const ReviewGalary = ({review, handleDelete, loader, setLoader}) => {
         
         console.log(placeholderText)
 
-        fetch(`http://localhost:5300/review/${id}`,{
+        fetch(`https://sports-lens-assignment.vercel.app/review/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -25,6 +25,7 @@ const ReviewGalary = ({review, handleDelete, loader, setLoader}) => {
         .then(res =>  res.json())
         .then(data => {
             console.log(data)
+            alert('review updated')
             setLoader(!loader)})
 
 

@@ -13,7 +13,7 @@ const ServiceDetails = () => {
     const details = useLoaderData()
 
     useEffect(()=>{
-        fetch(`http://localhost:5300/review?title=${details.title}`)
+        fetch(`https://sports-lens-assignment.vercel.app/review?title=${details.title}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)
