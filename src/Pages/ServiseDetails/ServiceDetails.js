@@ -9,7 +9,7 @@ const ServiceDetails = () => {
     const {user} = useContext(myContext)
     const [reviews, setReviews] = useState([])
     const [loader , setLoader] = useState(false)
-    // console.log(reviews, user)
+   
     const details = useLoaderData()
 
     useEffect(()=>{
@@ -51,7 +51,7 @@ const ServiceDetails = () => {
           <div className='m-5'>
               
           {
-                (user && user?.uid) ? <ReviewUser  title={details.title}></ReviewUser>  : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
+                (user && user?.uid) ? <ReviewUser loader={loader} setLoader={setLoader}  title={details.title}></ReviewUser>  : <p className='text-3xl text-center' > If you not login yet, please <Link className='text-blue-400' to={'/login'}>Login</Link> to add a review</p>
             }
 
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ReviewGalary = ({review, handleDelete, modal}) => {
+const ReviewGalary = ({review, handleDelete, loader, setLoader}) => {
     console.log(review)
     const {email, image, title, text, _id} = review
 
-    
+
     let  placeholderText
     const collectText = e => {
         placeholderText = e.target.value
@@ -12,6 +12,7 @@ const ReviewGalary = ({review, handleDelete, modal}) => {
       }
 
       const handleSubmit =(id) =>{
+        
         console.log(placeholderText)
 
         fetch(`http://localhost:5300/review/${id}`,{
@@ -23,7 +24,8 @@ const ReviewGalary = ({review, handleDelete, modal}) => {
         })
         .then(res =>  res.json())
         .then(data => {
-            console.log(data)})
+            console.log(data)
+            setLoader(!loader)})
 
 
    

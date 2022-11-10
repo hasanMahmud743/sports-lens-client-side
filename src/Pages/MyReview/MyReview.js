@@ -4,17 +4,24 @@ import ReviewGalary from '../../Shared/ReviewGallary/ReviewGalary';
 
 const MyReview = () => {
     const [reviews, setReviews] = useState([])
+    const [loader, setLoader] = useState(false)
     const {user} = useContext(myContext)
     console.log(reviews)
     // const review = useLoaderData
 
     useEffect(()=>{
-        fetch(`http://localhost:5300/review?email=${user?.email}`)
+       
+        fetch(`http://localhost:5300/review?email=${user?.email}`,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(data=> {
             setReviews(data)
+            console.log(data)
         })
-    }, [user?.email])
+    }, [user?.email, loader])
 
     const handleDelete =(id) =>{
         fetch(`http://localhost:5300/review/${id}`,{
@@ -32,13 +39,7 @@ const MyReview = () => {
 
    
 
-    const modal = _id =>{
-
-        <div>
-   
-   </div>
-
-    }
+    
 
 
     return (
@@ -64,7 +65,7 @@ const MyReview = () => {
    
       {
         (reviews.length === 0) ? <p className='pt-3 pb-20 font-bold text-2xl w-full'>No review is added yet.</p> : reviews.map( review =>{
-            return <ReviewGalary key={review._id} modal={modal}  handleDelete={handleDelete} review={review}></ReviewGalary>
+            return <ReviewGalary key={review._id} setLoader={setLoader} loader={loader}    handleDelete={handleDelete} review={review}></ReviewGalary>
          })
       }
     </tbody>

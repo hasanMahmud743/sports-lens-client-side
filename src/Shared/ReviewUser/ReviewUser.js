@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { myContext } from '../../Contexts/Contexts';
 
-const ReviewUser = ({title}) => {
+const ReviewUser = ({title, setLoader, loader}) => {
     // console.log(title)
     const {user} = useContext(myContext)
   
 
     const submitReview =(e) =>{
+        setLoader(!loader)
         e.preventDefault()
         const email = user.email
         const image = user.photoURL
