@@ -1,6 +1,6 @@
 # Getting Started with Sports-Lens site 
 
-Live site link [Sports-Lens](https://sports-lens-assignment.web.app).
+Live site link [Sports-Lens](https://bucolic-nasturtium-cfa50a.netlify.app/).
 
 ## Available feature 
 
