@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { myContext } from '../../Contexts/Contexts';
 import ReviewGalary from '../../Shared/ReviewGallary/ReviewGalary';
+import useTitle from '../../UseTitle/UseTitle';
 
 const MyReview = () => {
+  useTitle('My Review')
     const [reviews, setReviews] = useState([])
     const [loader, setLoader] = useState(false)
     const {user} = useContext(myContext)

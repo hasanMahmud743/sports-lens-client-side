@@ -32,7 +32,7 @@ const Header = () => {
               ?
               <> 
                  <Link to={'/'}><li><a>Home</a></li></Link>
-                 <Link><li><a>Blog</a></li></Link>
+                 <Link to={'/blog'}><li><a>Blog</a></li></Link>
                <Link to='/myreview'><li><a>My Review</a></li></Link>
                <Link to={'/addservice'}><li><a>Add Service</a></li></Link>
                 <Link onClick={handleLogOut}><li><a>Log Out</a></li></Link>
@@ -41,7 +41,7 @@ const Header = () => {
                <>
                  <Link to={'/'}><li><a>Home</a></li></Link>
                  <Link to={'/login'}><li><a>Log in</a></li></Link>
-                 <Link><li><a>Blog</a></li></Link>
+                 <Link to={'/blog'}><li><a>Blog</a></li></Link>
                </>
              }
           </ul>

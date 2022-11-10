@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { myContext } from '../../Contexts/Contexts';
+import useTitle from '../../UseTitle/UseTitle';
 
 const Login = () => {
+  
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
-
+  useTitle('Login')
     const {signInUser} = useContext(myContext)
 
     const handleLogin = (e) =>{

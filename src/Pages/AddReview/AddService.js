@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../../UseTitle/UseTitle';
 
 const AddService = () => {
+  useTitle('Add Review')
 
     const addServices = e =>{
         e.preventDefault()
