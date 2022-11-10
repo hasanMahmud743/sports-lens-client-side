@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myreview',
-                element:<MyReview></MyReview>,
+                element:<Private><MyReview></MyReview></Private>,
                 fetch: () => ('https://sports-lens-assignment.vercel.app/review')
             },
 

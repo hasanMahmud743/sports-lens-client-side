@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import pic from '../../Asset/6343845.jpg';
 import { myContext } from '../../Contexts/Contexts';
 import useTitle from '../../UseTitle/UseTitle';
 
@@ -57,9 +58,8 @@ const Login = () => {
           <div className="hero min-h-screen lg:p-20 bg-base-200">
         
   <div className="hero-content flex-col  lg:flex-row-reverse">
-    <div className="text-center lg:m-20  lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <div className="text-center lg:m-20 ">
+      <img className='rounded-x' src={pic} alt="" />
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
     <p className='text-3xl text-center font-bold mt-10'>Login!</p>

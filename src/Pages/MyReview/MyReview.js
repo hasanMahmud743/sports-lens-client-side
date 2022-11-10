@@ -9,7 +9,7 @@ const MyReview = () => {
   useTitle('My Review')
     const [reviews, setReviews] = useState([])
     const [loader, setLoader] = useState(false)
-    const {user, logOut} = useContext(myContext)
+    const {user, logOut, loading } = useContext(myContext)
     console.log(reviews)
     // const review = useLoaderData
     const notify = () => toast("Review Deleted successfully!");
@@ -17,7 +17,7 @@ const MyReview = () => {
     useEffect(()=>{
        
         
-        fetch(`http://localhost:5300/review?email=${user?.email}`,{
+        fetch(`https://sports-lens-assignment.vercel.app/review?email=${user?.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -72,7 +72,8 @@ const MyReview = () => {
 
     <tbody>
    
-      {
+      { Array.isArray(reviews) && 
+
         (reviews.length === 0) ? <p className='pt-3 pb-20 font-bold text-2xl w-full'>No review is added yet.</p> : reviews.map( review =>{
             return <ReviewGalary key={review._id} setLoader={setLoader} loader={loader}    handleDelete={handleDelete} review={review}></ReviewGalary>
          })

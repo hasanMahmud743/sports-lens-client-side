@@ -7,7 +7,10 @@ const Private = ({children}) => {
     let location = useLocation();
 
     
-    const {user} = useContext(myContext)
+    const {user, loading} = useContext(myContext)
+    if(loading){
+        return <div className='text-center p-10'> <button className="btn loading ">loading</button></div>
+     }
     if(user && user.uid){
         return children
     }

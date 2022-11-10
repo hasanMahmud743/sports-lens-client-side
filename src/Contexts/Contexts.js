@@ -13,7 +13,7 @@ const provider = new GoogleAuthProvider();
 const Contexts = ({children}) => {
 
     const [user, setUser] = useState(null)
-    const [loader, setLoader] = useState(true)
+    const [loading, setLoader] = useState(true)
 
     const githubSignIn = (provider) =>{
         return signInWithPopup(auth, provider)
@@ -54,7 +54,7 @@ const Contexts = ({children}) => {
 
 
     return (
-       <myContext.Provider value={{user, loader,logOut, createUser, githubSignIn, signInUser, profileUpdate, googleSignIn}}>
+       <myContext.Provider value={{user, loading,logOut, createUser, githubSignIn, signInUser, profileUpdate, googleSignIn}}>
         {children}
        </myContext.Provider>
     );
