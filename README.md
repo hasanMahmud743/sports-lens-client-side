@@ -1,6 +1,6 @@
 # Getting Started with Sports-Lens site 
 
-Live site link [Sports-Lens](https://bucolic-nasturtium-cfa50a.netlify.app/).
+Live site link [Sports-Lens-website](https://bucolic-nasturtium-cfa50a.netlify.app/).
 
 ## Available feature 
 
@@ -12,9 +12,12 @@ Live site link [Sports-Lens](https://bucolic-nasturtium-cfa50a.netlify.app/).
 
 
 ## Uses tools and technology
--  React
-- firebase
-- mongodb
+- React
+- Node
+- Express
+- React-router
+- Firebase
+- Mongodb
 - Daisy UI
 - Tailwind css
 

@@ -47,14 +47,14 @@ const ReviewUser = ({title, setLoader, loader}) => {
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input type="text" defaultValue={user.email} placeholder="Your Name" className="input input-bordered"  />
+          <input type="text" defaultValue={user.displayName} placeholder="Your Name" className="input input-bordered" readOnly />
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">User Image</span>
           </label>
-          <input type="text" defaultValue={user.photoURL}  placeholder="Your Image" className="input input-bordered" />
+          <input type="text" defaultValue={user.photoURL}  placeholder="Your Image" className="input input-bordered" readOnly />
         </div>
 
         <div className="form-control">

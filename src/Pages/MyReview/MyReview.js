@@ -17,7 +17,7 @@ const MyReview = () => {
     useEffect(()=>{
        
         
-        fetch(`https://sports-lens-assignment.vercel.app/review?email=${user?.email}`,{
+        fetch(`http://localhost:5300/review?email=${user?.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }

@@ -6,17 +6,25 @@ const Registration = () => {
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
-    const {createUser, googleSignIn} = useContext(myContext)
+    const {createUser, googleSignIn, profileUpdate} = useContext(myContext)
 
     const handleRegistration = (e) =>{
         e.preventDefault()
         setLoading(true)
         const form = e.target
         const email = form.email.value
+        const name = form.name.value
+        const image = form.image.value
         const password = form.password.value
         console.log(email, password)
+        const myObj = {
+          displayName: name,
+          photoURL: image
+      }
+
         createUser(email, password)
         .then(user => {
+          updateNameImage(myObj)
           console.log(user.user)
           setLoading(false)
           navigate('/')
@@ -26,6 +34,13 @@ const Registration = () => {
         })
 
     }
+
+
+    const updateNameImage = (obj) =>{
+      profileUpdate(obj)
+      .then(()=>{})
+      .catch(error => console.log(error))
+  }
 
     const googleSign = () =>{
       setLoading(true)
@@ -57,12 +72,29 @@ const Registration = () => {
         <p className='text-3xl text-center font-bold mt-10'>Registration!</p>
 
       <form onSubmit={handleRegistration} className="card-body">
+
+
+      <div className="form-control">
+          <label className="label">
+            <span className="label-text">Full Name</span>
+          </label>
+          <input type="text" name='name' autoComplete='on' placeholder="Name" className="input input-bordered" required />
+        </div>
+
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Image URL</span>
+          </label>
+          <input type="URL" name='image' autoComplete='on' placeholder="Image URL" className="input input-bordered" required />
+        </div>
+
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input type="text" name='email' placeholder="email" className="input input-bordered" />
         </div>
+
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
@@ -73,8 +105,9 @@ const Registration = () => {
             <a href="#" className="label-text-alt ">Already Registered? Go to <Link to='/login'  className="label-text-alt link text-blue-600 link-hover" >Login</Link> Page</a>
           </label>
         </div>
+
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Login</button>
+          <button onClick={updateNameImage} className="btn btn-primary">Registration</button>
         </div>
         <p onClick={googleSign}  className="btn btn-active btn-secondary">Google</p>
         
