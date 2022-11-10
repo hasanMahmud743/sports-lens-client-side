@@ -1,6 +1,7 @@
-
-import { Link, useLoaderData } from 'react-router-dom';
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import { Link, useLoaderData } from 'react-router-dom';
+
 
 
 const Services = () => {
@@ -17,9 +18,14 @@ const Services = () => {
                 {
                     serviceData.map(data => 
                         <div className="card  bg-base-100 shadow-xl">
-                            <figure className="p-10">
-                                <img src={data.image} alt="Shoes" className="rounded-xl" />
-                            </figure>
+                            <figure className="p-10 cursor-pointer">
+                              
+                                    <PhotoProvider >
+                                    <PhotoView src={data.image}>
+                                        <img src={data.image} alt="" />
+                                    </PhotoView>
+                                    </PhotoProvider>
+                                </figure>
                             <div className="card-body items-center text-center">
                                 <h2 className="card-title">{data.title}</h2>
                                 <p>{data.description.slice(0, 100) + '...'}</p>

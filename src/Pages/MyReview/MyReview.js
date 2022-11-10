@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { myContext } from '../../Contexts/Contexts';
 import ReviewGalary from '../../Shared/ReviewGallary/ReviewGalary';
 import useTitle from '../../UseTitle/UseTitle';
@@ -10,6 +12,7 @@ const MyReview = () => {
     const {user} = useContext(myContext)
     console.log(reviews)
     // const review = useLoaderData
+    const notify = () => toast("Review Deleted successfully!");
 
     useEffect(()=>{
        
@@ -37,6 +40,7 @@ const MyReview = () => {
             if(data.deletedCount > 0){
                 const remaining = reviews.filter(rv => rv._id !== id)
                 setReviews(remaining)
+                notify()
             }
             console.log(data)
         })
@@ -83,7 +87,7 @@ const MyReview = () => {
 
 
      </div>
-            
+     <ToastContainer />
         </div>
     );
 };

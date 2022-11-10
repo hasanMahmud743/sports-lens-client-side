@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
 
 const HomeServices = () => {
@@ -29,8 +31,13 @@ const HomeServices = () => {
            {
                 cards.map(card=> 
                 <div className="card  bg-base-100 shadow-xl">
-                <figure className="p-5">
-                  <img src={card.image} alt="Shoes" className="rounded-xl" />
+                <figure className="p-5 cursor-pointer">
+                  {/* <img src={card.image} alt="Shoes" className="rounded-xl" /> */}
+                    <PhotoProvider>
+                      <PhotoView src={card.image}>
+                        <img src={card.image} alt="" />
+                      </PhotoView>
+                    </PhotoProvider>
                 </figure>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">{card.title}</h2>

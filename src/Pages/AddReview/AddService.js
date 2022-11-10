@@ -1,8 +1,15 @@
 import React from 'react';
+
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../../UseTitle/UseTitle';
 
 const AddService = () => {
   useTitle('Add Review')
+  const navigate = useNavigate()
+  
+  const notify = () => toast("Congrates! Service added successfully");
 
     const addServices = e =>{
         e.preventDefault()
@@ -13,7 +20,7 @@ const AddService = () => {
         const current = form.c_price.value
         const time = new Date().toLocaleTimeString()
         const text = form.placeholder.value
-        console.log(title, img, prev, current, text, time)
+        // console.log(title, img, prev, current, text, time)
         const service = {
             title,
             image: img,
@@ -33,11 +40,24 @@ const AddService = () => {
 
         .then(res => res.json())
         .then(data => {
-            alert('Alhamdulillah! Service Updated successfully')
+          if(data.acknowledged){
+            console.log(data)
+            notify()
             e.target.reset()
+            // navigate('/')
+
+          }
+         
         })
 
+        
+        
+
     }
+
+    
+     
+
     return (
         <div>
            <div className="hero  bg-base-200">
@@ -51,44 +71,49 @@ const AddService = () => {
           <label className="label">
             <span className="label-text">Service Title</span>
           </label>
-          <input type="text" name='title' placeholder="Title" className="input input-bordered" />
+          <input type="text" name='title' placeholder="Title" className="input input-bordered" required />
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Service Image</span>
           </label>
-          <input type="text" name='image' placeholder="Image" className="input input-bordered" />
+          <input type="text" name='image' placeholder="Image" className="input input-bordered" required />
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Previous Price</span>
           </label>
-          <input type="text" name='p_price' placeholder="Previous Price" className="input input-bordered" />
+          <input type="text" name='p_price' placeholder="Previous Price" className="input input-bordered" required />
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Current Price</span>
           </label>
-          <input type="text" name='c_price' placeholder="Current Price" className="input input-bordered" />
+          <input type="text" name='c_price' placeholder="Current Price" className="input input-bordered" required />
         </div>
 
         <div className="form-control">
           <label className="label">
             <span className="label-text">Service Description</span>
           </label>
-          <input type="text" name='placeholder' placeholder="Add your description here..." className="input input-bordered " />
+          <input type="text" name='placeholder' placeholder="Add your description here..." className="input input-bordered " required />
      
         </div>
 
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Add service</button>
+          <button  className="btn btn-primary">Add service</button>
         </div>
       </form>
     </div>
   </div>
+
+  <ToastContainer />
+
+
+
 </div>
             
         </div>
